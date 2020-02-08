@@ -112,4 +112,11 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
 });
 
+// Handling the logout (this gives functionality to the logout button on dashboard/leaderboard page)
+router.get('/logout', (req, res) => {
+    req.logOut();
+    req.flash('success_msg', 'You have logged out');
+    res.redirect('/users/login');
+});
+
 module.exports = router;

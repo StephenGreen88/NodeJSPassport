@@ -4,6 +4,8 @@ const express = require('express');
 const router = express.Router();
 // Bring in bcrypt
 const bcrypt = require('bcryptjs');
+// Bring in passport
+const passport = require('passport');
 
 // User model
 const User = require('../models/User');
@@ -99,6 +101,15 @@ router.post('/register', (req, res) => {
             });
     }
 
+});
+
+// Handling the login (this section should implement the strategy set up on passport.js file in the config folder)
+router.post('/login', (req, res, next) => {
+    passport.authenticate('local', {
+        successRedirect: '/dashboard',
+        failureRedirect: '/users/login',
+        failureFlash: true
+    })(req, res, next);
 });
 
 module.exports = router;

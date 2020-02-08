@@ -3,6 +3,6 @@ const express = require('express');
 // Use the express route
 const router = express.Router();
 
-router.get('/', (req, res) => res.send('Welcome'));
+router.get('/', (req, res) => res.render('welcome'));
 
 module.exports = router;
